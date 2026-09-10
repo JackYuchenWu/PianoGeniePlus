@@ -25,7 +25,7 @@ class PianoGenieDecoder(nn.Module):
         pitch_embedding_dim: int = 128,
         button_embedding_dim: int = 32,
         time_embedding_dim: int = 32,
-        hidden_size: int = 512,
+        hidden_size: int = 128,
         num_layers: int = 2,
         max_delta_time: int = 32,
     ):

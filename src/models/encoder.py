@@ -27,8 +27,8 @@ class PianoGenieEncoder(nn.Module):
         self,
         num_pitches: int,
         embedding_dim: int = 128,
-        hidden_size: int = 256,
-        num_layers: int = 1,
+        hidden_size: int = 128,
+        num_layers: int = 2,
     ):
         super().__init__()
 

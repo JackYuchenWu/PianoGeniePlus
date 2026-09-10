@@ -28,6 +28,8 @@ class IntegerQuantizer(nn.Module):
     the decoder through the quantization operation.
     """
 
+    centroids:torch.Tensor
+    
     def __init__(
         self,
         num_buttons: int = 8,
@@ -41,7 +43,7 @@ class IntegerQuantizer(nn.Module):
 
         self.num_buttons = num_buttons
 
-        self.centroids = torch.linspace(
+        centroids = torch.linspace(
             -1.0,
             1.0,
             steps=num_buttons,
@@ -49,7 +51,7 @@ class IntegerQuantizer(nn.Module):
 
         self.register_buffer(
             "centroids",
-            self.centroids,
+            centroids,
         )
 
     def forward(
@@ -83,7 +85,7 @@ class IntegerQuantizer(nn.Module):
         """
 
         continuous = continuous_latents # (B, T)
-
+        print(self.centroids)
         # Shape becomes:
         #
         # (batch, time, num_buttons)
