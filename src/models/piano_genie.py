@@ -113,7 +113,7 @@ class PianoGenie(nn.Module):
         continuous_latents = self.encoder(
             pitches
         )
-
+        
         quantizer_output = self.quantizer(
             continuous_latents
         )

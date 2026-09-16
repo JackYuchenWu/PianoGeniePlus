@@ -85,7 +85,7 @@ class IntegerQuantizer(nn.Module):
         """
 
         continuous = continuous_latents # (B, T)
-        print(self.centroids)
+        # print(self.centroids)
         # Shape becomes:
         #
         # (batch, time, num_buttons)
