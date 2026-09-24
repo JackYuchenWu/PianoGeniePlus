@@ -7,6 +7,8 @@ from pathlib import Path
 import torch
 from torch.utils.data import Dataset
 
+MIN_PITCH = 42
+
 class PianoGenieDataset(Dataset):
     """
     Dataset for Piano Genie-style training on POP909.
@@ -339,7 +341,7 @@ class PianoGenieDataset(Dataset):
         song_index = segment["song_index"]
         song = self.songs[song_index]
 
-        pitches = song["pitches"]
+        pitches = song["pitches"] - MIN_PITCH
         delta_times = song["delta_times"]
 
         # Training: dynamically choose a random crop

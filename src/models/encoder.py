@@ -81,6 +81,10 @@ class PianoGenieEncoder(nn.Module):
                 (batch_size, sequence_length)
         """
 
+        _min_pitches = pitches.min()
+        _max_pitches = pitches.max()
+        assert _min_pitches >= 0, f"Found negative pitch index {_min_pitches}!"
+        assert _max_pitches < self.num_pitches, f"Pitch index {_max_pitches} exceeds embedding size!"
         x = self.pitch_embedding(pitches) # (B, T, C)
 
         x, _ = self.lstm(x) # (B, T, 2*hidden)

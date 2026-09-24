@@ -91,7 +91,7 @@ class Trainer:
         batch: dict[str, torch.Tensor],
     ) -> dict[str, torch.Tensor]:
         return {
-            key: value.to(self.device)
+            key: value.to(self.device) if torch.is_tensor(value) else value
             for key, value in batch.items()
         }
 
