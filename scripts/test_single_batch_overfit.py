@@ -52,7 +52,7 @@ def move_batch_to_device(batch: dict[str, torch.Tensor], device:torch.device) ->
     }
 
 
-def reconstruction_accuracy(model:torch.nn.Module, batch: dict[str, torch.Tensor]):
+def reconstruction_accuracy(model:torch.nn.Module, batch: dict[str, torch.Tensor]) -> float:
     """Compute note reconstruction accuracy on the fixed batch."""
     model.eval()
 
@@ -70,7 +70,7 @@ def reconstruction_accuracy(model:torch.nn.Module, batch: dict[str, torch.Tensor
     return accuracy.item()
 
 
-def parameter_distance(initial_state, model):
+def parameter_distance(initial_state: dict[str, torch.Tensor], model:torch.nn.Module) -> float:
     """L2 distance between initial and current model parameters."""
     distance_squared = 0.0
 
@@ -84,7 +84,7 @@ def parameter_distance(initial_state, model):
 
 # Dataset
 
-def make_real_training_loader():
+def make_real_training_loader() -> DataLoader:
     """
     Construct a DataLoader containing exactly one real POP909 batch.
 
